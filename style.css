@@ -25,6 +25,7 @@ video {
     width: 4rem;
     border-radius: 50%;
     border: none;
+    z-index: 3;
 }
 
 #record {
@@ -44,14 +45,14 @@ video {
 .record-bubble {
     height: 2.6rem;
     width: 2.6rem;
-    background-color: red;
+    background-color: rgb(218, 9, 9);
     border-radius: 50%;
 }
 
 .capture-bubble {
     height: 2.6rem;
     width: 2.6rem;
-    background-color: white;
+    background-color: rgb(255, 248, 248);
     border-radius: 50%;
 }
 
@@ -87,3 +88,57 @@ video {
     }
 }
 
+.filter-container {
+    height: 25rem;
+    width: 5rem;
+    position: fixed;
+    left: 2rem;
+    top: calc((100vh - 25rem) / 2);
+    background-color: white;
+    z-index: 3;
+    opacity: 0.9;
+}
+
+.filter {
+    border: 2px solid white;
+    width: 100%;
+    height: calc(25rem / 6);
+    background: url(filter.jpg);
+    background-size: cover;
+    background-blend-mode: soft-light;
+    cursor: pointer;
+}
+
+.zoom-in-out-container {
+    height: 8rem;
+    width: 4rem;
+    position: fixed;
+    right: 2rem;
+    top: 3rem;
+    z-index: 3;
+}
+
+.zoom-in-out-container div {
+    width: 100%;
+    height: 50%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.filter-div {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.zoom-in {
+    font-size: 2.2rem;
+}
+
+.zoom-out {
+    font-size: 2.5rem;
+}
