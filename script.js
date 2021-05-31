@@ -68,6 +68,7 @@ recordBtn.addEventListener('click', function() {
         isRecording = true;
         currZoom = 1;
         video.style.transform = `scale(${currZoom})`;
+        removeFilter();
         document.querySelector('.record-bubble').classList.add('fader-animation');
     }
 });
@@ -110,6 +111,12 @@ function capture() { // click picture
     ctx.translate(-c.width / 2, -c.height / 2);
 
     ctx.drawImage(video, 0, 0); // draw that video frame
+
+    if(filter != '') // check if filter is selected
+    {
+        ctx.fillStyle = filter;
+        ctx.fillRect(0, 0, c.width, c.height);
+    }
 
     // save trick
     let a = document.createElement('a');
