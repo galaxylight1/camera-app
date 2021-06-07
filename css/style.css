@@ -103,7 +103,7 @@ video {
     border: 2px solid white;
     width: 100%;
     height: calc(25rem / 6);
-    background: url(filter.jpg);
+    background: url(/filter.jpg);
     background-size: cover;
     background-blend-mode: soft-light;
     cursor: pointer;
@@ -141,4 +141,14 @@ video {
 
 .zoom-out {
     font-size: 2.7rem;
+}
+
+.gallery {
+    position: fixed;
+    right: 3rem;
+    bottom: 1rem;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 3;
 }

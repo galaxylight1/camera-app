@@ -17,6 +17,7 @@ let maxZoom = 3;
 let currZoom = 1;
 let zoomIn = document.querySelector('.zoom-in');
 let zoomOut = document.querySelector('.zoom-out');
+let gallery = document.querySelector('.gallery');
 
 for(let i = 0; i < filters.length; i++)
 {
@@ -73,6 +74,9 @@ recordBtn.addEventListener('click', function() {
     }
 });
 
+// open gallery
+gallery.addEventListener('click', () => location.assign('html/gallery.html'));
+
 // using navigator object provided by Browser
 navigator.mediaDevices
     .getUserMedia(constraints)
@@ -88,6 +92,8 @@ navigator.mediaDevices
 
         mediaRecorder.addEventListener('stop', function() {
             let blob = new Blob(chunks, { type: 'video/mp4' }); // very large file is blob
+            
+            addMedia('video', blob); // store in DB
 
             chunks = [];
             let url = URL.createObjectURL(blob);
@@ -118,6 +124,8 @@ function capture() { // click picture
         ctx.fillRect(0, 0, c.width, c.height);
     }
 
+    addMedia('img', c.toDataURL()); // store in DB
+
     // save trick
     let a = document.createElement('a');
     a.download = 'image.jpg';
@@ -137,3 +145,4 @@ function removeFilter() {
     let filterDiv = document.querySelector('.filter-div');
     if(filterDiv) filterDiv.remove(); // if it is overlayed then remove the prev
 }
+
