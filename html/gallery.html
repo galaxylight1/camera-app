@@ -5,25 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/gallery.css">
-    <title>Document</title>
+    <link rel="icon" href="../favicon-2.png" />
+    <script src="../perfect-scrollbar-1.4.0/dist/perfect-scrollbar.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../perfect-scrollbar-1.4.0/css/perfect-scrollbar.css">
+    <title>Gallery</title>
 </head>
 <body>
-    <div class="container">
-        <!-- <div class="media-card">
-            <div class="media-container">
-            </div>
-            <div class="action-container">
-                <button class="media-download"></button>
-                <button class="media-delete"></button>
-            </div>
-        </div> -->
-    </div> 
-
+    <div class="main-container">
+        <div class="back-option"><div id="go-back" class="material-icons">arrow_back</div><span>Back</span></div>
+        <div class="container">
+            <!-- <div class="media-card">
+                <div class="media-container">
+                </div>
+                <div class="action-container">
+                    <button class="media-download"></button>
+                    <button class="media-delete"></button>
+                </div>
+            </div> -->
+        </div> 
+    </div>
+    
     <script src="../js/dbScript.js"></script>
     <script>
+        const ps = new PerfectScrollbar('.main-container', {
+            wheelSpeed: 0.4
+        });
+
         setTimeout(function() {
             viewMedia();
         }, 100);
+
+        goBack.addEventListener('click', () => location.assign('../'));
     </script>
 </body>
 </html>

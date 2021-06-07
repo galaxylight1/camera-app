@@ -1,6 +1,7 @@
 let dbAccess;
 let request = indexedDB.open('Camera', 1);
 let container = document.querySelector('.container');
+let goBack = document.querySelector('.back-option');
 
 request.addEventListener('success', function() {
     dbAccess = request.result;
@@ -16,6 +17,11 @@ request.addEventListener('error', function() {
 });
 
 function addMedia(type, media) {
+    let arrow = document.createElement('div');
+    arrow.innerHTML = '<div id="notify-save" class="material-icons">arrow_forward</div>';
+    document.querySelector('body').append(arrow);
+    setTimeout(() => arrow.remove(), 1000);
+
     let tx = dbAccess.transaction('gallery', 'readwrite');
     let galleryObjectStore = tx.objectStore('gallery');
     let data = {
@@ -41,15 +47,11 @@ function viewMedia() {
             // create media card
             let div = document.createElement('div');
             div.classList.add('media-card');
-            div.innerHTML = `<div class="media-card">
-                <div class="media-container">
-                
-                </div>
+            div.innerHTML = `<div class="media-container"></div>
                 <div class="action-container">
-                    <button class="media-download"></button>
-                    <button class="media-delete" data-id="${cursor.value.mId}"></button>
-                </div>
-            </div>`;
+                    <button class="media-download material-icons">download</button>
+                    <button class="media-delete material-icons" data-id="${cursor.value.mId}">delete</button>
+                </div>`;
             
             let downloadBtn = div.querySelector('.media-download');
             let deleteBtn = div.querySelector('.media-delete');
@@ -83,13 +85,15 @@ function viewMedia() {
                 video.addEventListener('mouseenter', function() {
                     video.currentTime = 0;
                     video.play();
+                    video.controls = true;
                 });
 
                 video.addEventListener('mouseleave', function() {
                     video.pause();
+                    video.controls = false;
                 });
 
-                video.controls = true;
+                video.controls = false;
                 video.loop = true;
                 video.muted = true;
 

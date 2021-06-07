@@ -96,12 +96,13 @@ navigator.mediaDevices
             addMedia('video', blob); // store in DB
 
             chunks = [];
-            let url = URL.createObjectURL(blob);
-            let a = document.createElement('a');
-            a.download = 'video.mp4';
-            a.href = url;
-            a.click();
-            a.remove();
+            
+            // let url = URL.createObjectURL(blob);
+            // // let a = document.createElement('a');
+            // // a.download = 'video.mp4';
+            // // a.href = url;
+            // // a.click();
+            // // a.remove();
         });
     });
 
@@ -127,11 +128,11 @@ function capture() { // click picture
     addMedia('img', c.toDataURL()); // store in DB
 
     // save trick
-    let a = document.createElement('a');
-    a.download = 'image.jpg';
-    a.href = c.toDataURL();
-    a.click();
-    a.remove();
+    // let a = document.createElement('a');
+    // a.download = 'image.jpg';
+    // a.href = c.toDataURL();
+    // a.click();
+    // a.remove();
 }
 
 function applyFilter(filterColor) {
